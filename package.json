@@ -73,7 +73,9 @@
     "unused-deps": "dependency-check --unused --no-dev .",
     "predemo": "cp test/index-input.html test/index.html",
     "demo": "ts-node src/index.ts",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "release": {
     "analyzeCommits": "simple-commit-message",
@@ -90,6 +92,7 @@
     "@types/mocha": "2.2.44",
     "@types/node": "8.0.54",
     "ban-sensitive-files": "1.9.1",
+    "cypress": "1.1.2",
     "dependency-check": "2.9.1",
     "deps-ok": "1.2.1",
     "dont-crack": "1.2.1",
