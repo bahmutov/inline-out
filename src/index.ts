@@ -1,5 +1,9 @@
 'use strict'
 
-const foo = true
+import { debug } from 'debug'
 
-export default foo
+const log = debug('inline-out')
+
+log('starting ...')
+
+// export default foo

@@ -28,6 +28,9 @@
   "engines": {
     "node": ">=6"
   },
+  "bin": {
+    "inline-out": "build/index.js"
+  },
   "files": ["build/*.js", "build/*.js.map"],
   "homepage": "https://github.com/bahmutov/inline-out#readme",
   "keywords": ["cli", "csp", "extract", "extractor", "inline", "script"],
@@ -42,6 +45,7 @@
     "url": "https://github.com/bahmutov/inline-out.git"
   },
   "scripts": {
+    "start": "ts-node src/index.ts",
     "ban": "ban",
     "build": "tsc --pretty",
     "deps": "deps-ok && dependency-check --no-dev .",
@@ -76,5 +80,8 @@
     "tslint": "5.8.0",
     "tslint-config-standard": "7.0.0",
     "typescript": "2.6.2"
+  },
+  "dependencies": {
+    "debug": "3.1.0"
   }
 }

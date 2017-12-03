@@ -18,6 +18,10 @@ npm install --save inline-out
 
 ## Use
 
+### Debugging
+
+Run with `DEBUG=inline-out` environment variable
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
