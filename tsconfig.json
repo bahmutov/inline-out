@@ -3,9 +3,9 @@
     "outDir": "./build",
     "allowJs": true,
     "target": "es2015",
-    "module": "commonjs"
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node"
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*"]
 }
