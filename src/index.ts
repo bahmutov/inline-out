@@ -66,5 +66,7 @@ if (!module.parent) {
   const testIndex = join(__dirname, '..', 'test', 'index.html')
   inlineOut({ file: testIndex })
     .then(writeFiles)
-    .then(console.log, console.error)
+    .then(() => {
+      console.log('all done')
+    }, console.error)
 }

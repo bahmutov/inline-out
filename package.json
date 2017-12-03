@@ -69,7 +69,9 @@
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
     "unit": "mocha -r ts-node/register src/*-spec.ts",
-    "unused-deps": "dependency-check --unused --no-dev ."
+    "unused-deps": "dependency-check --unused --no-dev .",
+    "predemo": "cp test/index-input.html test/index.html",
+    "demo": "ts-node src/index.ts"
   },
   "release": {
     "analyzeCommits": "simple-commit-message"

@@ -6,10 +6,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "moduleResolution": "node",
-    "strict": true,
-    "typeRoots": [
-      "types"
-    ]
+    "strict": true
   },
   "include": ["./src/**/*"]
 }
