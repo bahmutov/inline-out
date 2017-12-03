@@ -58,8 +58,14 @@ export function inlineOut(
     })
 }
 
-export function writeFiles(data: OutputContents): Promise<void> {
-  return fs.writeFile(data.html.filename, data.html.contents)
+export function writeFiles(data: OutputContents): Promise<any> {
+  return fs
+    .writeFile(data.html.filename, data.html.contents)
+    .then(() =>
+      Promise.all(
+        data.js.map(script => fs.writeFile(script.filename, script.contents))
+      )
+    )
 }
 
 if (!module.parent) {
