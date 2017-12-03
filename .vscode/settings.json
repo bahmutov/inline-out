@@ -2,5 +2,6 @@
   "git.ignoreLimitWarning": true,
   "prettier.singleQuote": true,
   "prettier.semi": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "prettier.eslintIntegration": false
 }

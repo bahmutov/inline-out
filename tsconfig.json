@@ -5,7 +5,11 @@
     "target": "es2015",
     "module": "commonjs",
     "sourceMap": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strict": true,
+    "typeRoots": [
+      "types"
+    ]
   },
   "include": ["./src/**/*"]
 }

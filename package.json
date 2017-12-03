@@ -31,9 +31,19 @@
   "bin": {
     "inline-out": "build/index.js"
   },
-  "files": ["build/*.js", "build/*.js.map"],
+  "files": [
+    "build/*.js",
+    "build/*.js.map"
+  ],
   "homepage": "https://github.com/bahmutov/inline-out#readme",
-  "keywords": ["cli", "csp", "extract", "extractor", "inline", "script"],
+  "keywords": [
+    "cli",
+    "csp",
+    "extract",
+    "extractor",
+    "inline",
+    "script"
+  ],
   "license": "MIT",
   "main": "build/",
   "private": false,
@@ -56,8 +66,7 @@
     "pretest": "npm run build",
     "pretty": "prettier --write 'src/*.ts'",
     "secure": "nsp check",
-    "size":
-      "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
     "unit": "mocha -r ts-node/register src/*-spec.ts",
     "unused-deps": "dependency-check --unused --no-dev ."
@@ -66,7 +75,11 @@
     "analyzeCommits": "simple-commit-message"
   },
   "devDependencies": {
+    "@types/debug": "0.0.30",
+    "@types/fs-extra": "4.0.5",
+    "@types/minimist": "1.2.0",
     "@types/mocha": "2.2.44",
+    "@types/node": "8.0.54",
     "ban-sensitive-files": "1.9.1",
     "dependency-check": "2.9.1",
     "deps-ok": "1.2.1",
@@ -77,11 +90,13 @@
     "pre-git": "3.16.0",
     "prettier": "1.8.2",
     "ts-node": "3.3.0",
-    "tslint": "5.8.0",
-    "tslint-config-standard": "7.0.0",
     "typescript": "2.6.2"
   },
   "dependencies": {
-    "debug": "3.1.0"
+    "catsup": "0.1.0",
+    "debug": "3.1.0",
+    "fs-extra": "4.0.2",
+    "minimist": "1.2.0",
+    "replace-string": "1.1.0"
   }
 }
