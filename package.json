@@ -28,7 +28,7 @@
   "engines": {
     "node": ">=6"
   },
-  "files": ["src/*.ts", "build/*.js", "!src/*-spec.ts", "!build/*-spec.js"],
+  "files": ["build/*.js", "build/*.js.map"],
   "homepage": "https://github.com/bahmutov/inline-out#readme",
   "keywords": ["cli", "csp", "extract", "extractor", "inline", "script"],
   "license": "MIT",
