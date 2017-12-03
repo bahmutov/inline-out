@@ -7,6 +7,7 @@ import * as fs from 'fs-extra'
 
 const catsup = require('catsup')
 const replaceString = require('replace-string')
+const stripIndent = require('strip-indent')
 
 const log = debug('inline-out')
 
@@ -34,7 +35,11 @@ interface FileWithContents {
 
 interface OutputContents {
   html: FileWithContents
-  js: [FileWithContents]
+  js: FileWithContents[]
+}
+
+function cleanupJS(source: string) {
+  return stripIndent(source).trim()
 }
 
 export function inlineOut(
@@ -54,6 +59,13 @@ export function inlineOut(
       // remove full paths, including path separator
       const folder = dirname(result.html.filename) + sep
       result.html.contents = replaceString(result.html.contents, folder, '')
+
+      // TODO can use Ramda evolve here
+      result.js = result.js.map((js: FileWithContents) => {
+        js.contents = cleanupJS(js.contents) + '\n'
+        return js
+      })
+
       return result
     })
 }
