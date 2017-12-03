@@ -10,6 +10,7 @@
       "pre-commit": [
         "npm prune",
         "npm run deps",
+        "npm run demo",
         "npm test",
         "git add src/*.ts",
         "echo npm run ban"
