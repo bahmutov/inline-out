@@ -6,7 +6,10 @@
     "module": "commonjs",
     "sourceMap": true,
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "types": ["node"],
+    "lib": ["es2017"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }

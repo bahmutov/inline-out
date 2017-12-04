@@ -1,6 +1,6 @@
 'use strict'
 
-import { inlineOut } from '.'
+import { inlineOut } from './utils'
 
 describe('inline-out', () => {
   it('write this test', () => {

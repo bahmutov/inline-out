@@ -2,6 +2,9 @@
   "git.ignoreLimitWarning": true,
   "prettier.singleQuote": true,
   "prettier.semi": false,
-  "editor.formatOnSave": true,
-  "prettier.eslintIntegration": false
+  "editor.formatOnSave": false,
+  "prettier.eslintIntegration": false,
+  "prettier.disableLanguages": ["ts", "json"],
+  "tslint.enable": true,
+  "tslint.autoFixOnSave": true
 }
