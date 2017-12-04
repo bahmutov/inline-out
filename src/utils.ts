@@ -1,26 +1,18 @@
 'use strict'
 
-import { dirname, sep } from 'path'
+import { normalize, dirname, sep } from 'path'
+import * as is from 'check-more-types'
 import * as debug from 'debug'
-import * as minimist from 'minimist'
 import * as fs from 'fs-extra'
+import * as pluralize from 'pluralize'
 
+const la = require('lazy-ass')
 const catsup = require('catsup')
 const replaceString = require('replace-string')
 const stripIndent = require('strip-indent')
+const R = require('ramda')
 
 const log = debug('inline-out')
-
-log('starting ...')
-
-const args = minimist(process.argv.slice(2), {
-  string: 'file',
-  alias: {
-    file: 'f'
-  }
-})
-log('CLI arguments')
-log(args)
 
 export interface InlineOutArguments {
   file: string
@@ -40,20 +32,40 @@ function cleanupJS (source: string) {
   return stripIndent(source).trim()
 }
 
+function normalizeInput (options: InlineOutArguments) {
+  la(is.unemptyString(options.file), 'Missing --file <html filename>')
+  options.file = normalize(options.file)
+  return options
+}
+
+function asOutputContents (catsupResult: any): OutputContents {
+  return catsupResult as OutputContents
+}
+
+function printOutputFiles (x: OutputContents) {
+  log('extracted %d JS %s', x.js.length, pluralize('script', x.js.length))
+}
+
 export function inlineOut (
   options: InlineOutArguments
 ): Promise<OutputContents> {
+  options = normalizeInput(options)
+  log('input file', options.file)
+
+  const contentWithFilename = (contents: string) => {
+    return {
+      filename: options.file,
+      contents
+    }
+  }
+
   return fs
     .readFile(options.file, 'utf-8')
-    .then(contents => {
-      return {
-        filename: options.file,
-        contents
-      }
-    })
+    .then(contentWithFilename)
     .then(catsup)
-    .then((processed: any) => {
-      const result: OutputContents = processed as OutputContents
+    .then(asOutputContents)
+    .then(R.tap(printOutputFiles))
+    .then((result: OutputContents) => {
       // remove full paths, including path separator
       const folder = dirname(result.html.filename) + sep
       result.html.contents = replaceString(result.html.contents, folder, '')

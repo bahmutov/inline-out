@@ -62,9 +62,7 @@
     "deps": "deps-ok && dependency-check --no-dev .",
     "issues": "git-issues",
     "license": "license-checker --production --onlyunknown --csv",
-    "tslint": "tslint --project . --fix --format stylish src/*.ts",
-    "lint": "tsc --pretty --noEmit src/*.ts",
-    "prelint": "npm run tslint",
+    "lint": "tslint --project . --fix --format stylish src/*.ts",
     "pretest": "npm run build",
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
@@ -72,7 +70,7 @@
     "unit": "mocha -r ts-node/register src/*-spec.ts",
     "unused-deps": "dependency-check --unused --no-dev .",
     "predemo": "cp test/index-input.html test/index.html",
-    "demo": "ts-node src/index.ts",
+    "demo": "ts-node src/index.ts --file test/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
@@ -91,6 +89,8 @@
     "@types/minimist": "1.2.0",
     "@types/mocha": "2.2.44",
     "@types/node": "8.0.54",
+    "@types/pluralize": "0.0.28",
+    "@types/ramda": "0.25.6",
     "ban-sensitive-files": "1.9.1",
     "cypress": "1.1.2",
     "dependency-check": "2.9.1",
@@ -111,9 +111,13 @@
   },
   "dependencies": {
     "catsup": "0.1.0",
+    "check-more-types": "2.24.0",
     "debug": "3.1.0",
     "fs-extra": "4.0.2",
+    "lazy-ass": "1.6.0",
     "minimist": "1.2.0",
+    "pluralize": "7.0.0",
+    "ramda": "0.25.0",
     "replace-string": "1.1.0",
     "strip-indent": "2.0.0"
   }
