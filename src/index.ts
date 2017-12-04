@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { InlineOutArguments, inlineOut, writeFiles } from './utils'
 
 import * as debug from 'debug'
