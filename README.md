@@ -13,10 +13,25 @@
 Requires [Node](https://nodejs.org/en/) version 6 or above.
 
 ```sh
-npm install --save inline-out
+npm install --save-dev inline-out
 ```
 
 ## Use
+
+Pass HTML filename using `--file, -f`
+
+```
+$(npm bin)/inline-out --file public/index.html
+```
+
+This will extract all inline scripts from `public/index.html` and save them as 
+`public/index.0.js`, `public/index.1.js`, etc. Instead of inline scripts, `index.html` will have external links. Then you can set strict [content security policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) 
+to [disallow unsafe inline](https://glebbahmutov.com/blog/disable-inline-javascript-for-security/)
+ scripts to stop XSS attacks.
+
+```
+Content-Security-Policy: default-src 'self'; script-src 'self' trusted-cdn.com
+```
 
 ### Debugging
 
